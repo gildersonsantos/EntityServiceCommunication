@@ -15,7 +15,7 @@ class IncrementBoundService : Service() {
     private inner class IncrementBoundServiceHandler(looper: Looper): Handler(looper){
         override fun handleMessage(msg: Message){
             super.handleMessage(msg)
-            msg.replyTo.also {
+            msg.replyTo?.also {
                 clientMessenger = it
             }
             msg.data.getInt("VALUE", -1).also {
